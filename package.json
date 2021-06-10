@@ -1,0 +1,11 @@
+{
+  "name": "trading-bot",
+  "version": "1.0.0",
+  "description": "Trading Bot w/ Alpaca API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eric Lorenzen",
+  "license": "ISC"
+}
