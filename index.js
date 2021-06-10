@@ -9,6 +9,9 @@ const init = async () => {
     // find downtrending stock
     const symbol = await getDownTrendingStock();
     console.log('symbol: ', symbol)
+    const accountInfo = await getAccountValue()
+    const buyingPower = accountInfo.buying_power
+    console.log('getAccountValue: ', buyingPower)
     // Check every minute
     const checkAndOrder = async () => {
         // look at last 2 interval candles before the current minute, for example if the time is 9:32am, 9:30am is bar1, 9:31am is bar2
@@ -41,7 +44,7 @@ const init = async () => {
             (bar2.v > bar1.v)
         ) {
             // Get 10% of account value
-            const willingToSpend = getAccountValue() * .1;
+            const willingToSpend = buyingPower * .1;
             // Find how many shares we can buy with 10% of account value
             const amt = Math.floor(willingToSpend / bar2.c);
             // Buy this stock
