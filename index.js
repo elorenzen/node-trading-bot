@@ -15,7 +15,7 @@ const init = async () => {
     console.log('getAccountValue: ', buyingPower)
 
     // Check every minute
-    const checkAndOrder = async (ticker) => {
+    const bullishEngulfing = async (ticker) => {
         // look at last 2 interval candles before the current minute
         const oneMinuteMS = 60000;
         const now = new Date();
@@ -119,8 +119,8 @@ const init = async () => {
     })
 
     tickers.forEach(ticker => {
-        checkAndOrder(ticker);
-        setInterval(checkAndOrder, 60 * 1000, ticker);
+        bullishEngulfing(ticker);
+        setInterval(bullishEngulfing, 60 * 1000, ticker);
     })
 }
 init();
