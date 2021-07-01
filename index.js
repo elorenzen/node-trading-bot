@@ -2,7 +2,7 @@ require('dotenv').config();
 const getStocks = require('./lib/getDownTrendingStock');
 const bullishEngulfing = require('./lib/strategies/bullishEngulfing');
 const threeLineStrike = require('./lib/strategies/threeLineStrike');
-const getPositions = require('./lib/getPositions');
+const getPositions = require('./lib/getAllPositions');
 const { sellStop, sellLimit } = require('./lib/order')
 
 const init = async () => {
@@ -12,12 +12,12 @@ const init = async () => {
 
     const now = new Date();
     const hourNow = now.getHours()
-    const minutesNow = now.getMinutes()
+    // const minutesNow = now.getMinutes()
     const dayOfWeek = now.getDay()
 
     // Market is open
     if (
-        (hourNow >= 6 && minutesNow >= 30) &&
+        hourNow >= 7 &&
         hourNow < 13 &&
         (dayOfWeek >= 1 && dayOfWeek <= 5)
     ) {
