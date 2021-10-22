@@ -34,7 +34,7 @@ const init = async () => {
             const stopPrice = Number(position.avg_entry_price) - (Number(position.avg_entry_price) * .02)
             sellStop({ticker, price: stopPrice, amt});
             
-            const profitTarget = (Number(position.avg_entry_price) * 1.2);
+            const profitTarget = (Number(position.avg_entry_price) * 1.05);
             sellLimit({ticker, price: profitTarget, amt});
         })
     }
