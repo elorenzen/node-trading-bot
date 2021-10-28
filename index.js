@@ -21,16 +21,6 @@ const init = async () => {
         (dayOfWeek >= 1 && dayOfWeek <= 5)
     ) {
         console.log('Market is open!')
-        positions.forEach(position => {
-            // Create sell limit, sell stop order for given symbol
-            const ticker = position.symbol
-            const amt = position.qty
-
-            const stopPrice = Number(position.avg_entry_price) - (Number(position.avg_entry_price) * .02)
-            const profitTarget = (Number(position.avg_entry_price) * 1.05);
-
-            ocoSell({ticker, stopPrice, profitTarget, amt})
-        })
 
         tickers.forEach(ticker => {
             threeLineStrike(ticker)
