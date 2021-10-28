@@ -34,17 +34,17 @@ const init = async () => {
 
             ocoSell({ticker, stopPrice, profitTarget, amt})
         })
+
+        tickers.forEach(ticker => {
+            threeLineStrike(ticker)
+            setInterval(threeLineStrike, 60 * 1000, ticker);
+        })
+    
+        tickers.forEach(ticker => {
+            bullishEngulfing(ticker);
+            setInterval(bullishEngulfing, 60 * 1000, ticker);
+        })
     }
     else console.log('Market is closed.')
-
-    tickers.forEach(ticker => {
-        threeLineStrike(ticker)
-        setInterval(threeLineStrike, 60 * 1000, ticker);
-    })
-
-    tickers.forEach(ticker => {
-        bullishEngulfing(ticker);
-        setInterval(bullishEngulfing, 60 * 1000, ticker);
-    })
 }
 init();
