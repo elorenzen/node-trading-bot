@@ -3,7 +3,6 @@ const getStocks = require('./lib/getDownTrendingStock');
 const bullishEngulfing = require('./lib/strategies/bullishEngulfing');
 const threeLineStrike = require('./lib/strategies/threeLineStrike');
 const getPositions = require('./lib/getAllPositions');
-// const twentyForty = require('./lib/strategies/twentyForty')
 const { ocoSell } = require('./lib/order')
 
 const init = async () => {
@@ -13,7 +12,6 @@ const init = async () => {
 
     const now = new Date();
     const hourNow = now.getHours()
-    // const minutesNow = now.getMinutes()
     const dayOfWeek = now.getDay()
 
     // Market is open
@@ -38,13 +36,6 @@ const init = async () => {
         })
     }
     else console.log('Market is closed.')
-
-    /*
-    tickers.forEach(ticker => {
-        twentyForty(ticker)
-        setInterval(twentyForty, 60 * 1000, ticker)
-    })
-    */
 
     tickers.forEach(ticker => {
         threeLineStrike(ticker)
