@@ -7,7 +7,6 @@ const { ocoSell } = require('./lib/order')
 
 const init = async () => {
     const tickers = await getStocks();
-    console.log('tickers: ', tickers)
     const positions = await getPositions()
 
     const now = new Date();
@@ -23,9 +22,6 @@ const init = async () => {
         console.log('Market is open!')
         positions.forEach(position => {
             // Create sell limit, sell stop order for given symbol
-            console.log('symbol: ', position.symbol)
-            console.log('quantity: ', position.qty)
-            console.log('average entry price: $', position.avg_entry_price)
             const ticker = position.symbol
             const amt = position.qty
 
