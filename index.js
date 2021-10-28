@@ -4,7 +4,7 @@ const bullishEngulfing = require('./lib/strategies/bullishEngulfing');
 const threeLineStrike = require('./lib/strategies/threeLineStrike');
 const getPositions = require('./lib/getAllPositions');
 // const twentyForty = require('./lib/strategies/twentyForty')
-const { sellStop, sellLimit } = require('./lib/order')
+const { ocoSell } = require('./lib/order')
 
 const init = async () => {
     const tickers = await getStocks();
@@ -32,10 +32,9 @@ const init = async () => {
             const amt = position.qty
 
             const stopPrice = Number(position.avg_entry_price) - (Number(position.avg_entry_price) * .02)
-            sellStop({ticker, price: stopPrice, amt});
-            
             const profitTarget = (Number(position.avg_entry_price) * 1.05);
-            sellLimit({ticker, price: profitTarget, amt});
+
+            ocoSell({ticker, stopPrice, profitTarget, amt})
         })
     }
     else console.log('Market is closed.')
