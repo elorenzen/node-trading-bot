@@ -8,7 +8,6 @@ const { ocoSell } = require('./lib/order')
 
 const init = async () => {
     const tickers = await getStocks();
-    const positions = await getPositions()
 
     const now = new Date();
     const hourNow = now.getHours()
