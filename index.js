@@ -2,9 +2,7 @@ require('dotenv').config();
 const getStocks = require('./lib/getDownTrendingStock');
 const bullishEngulfing = require('./lib/strategies/bullishEngulfing');
 const threeLineStrike = require('./lib/strategies/threeLineStrike');
-const getPositions = require('./lib/getAllPositions');
 const twentyForty = require('./lib/strategies/twentyForty');
-const { ocoSell } = require('./lib/order')
 
 const init = async () => {
     const tickers = await getStocks();
