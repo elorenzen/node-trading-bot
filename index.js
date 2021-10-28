@@ -3,6 +3,7 @@ const getStocks = require('./lib/getDownTrendingStock');
 const bullishEngulfing = require('./lib/strategies/bullishEngulfing');
 const threeLineStrike = require('./lib/strategies/threeLineStrike');
 const getPositions = require('./lib/getAllPositions');
+const twentyForty = require('./lib/strategies/twentyForty');
 const { ocoSell } = require('./lib/order')
 
 const init = async () => {
@@ -39,6 +40,11 @@ const init = async () => {
         tickers.forEach(ticker => {
             bullishEngulfing(ticker);
             setInterval(bullishEngulfing, 60 * 1000, ticker);
+        })
+
+        tickers.forEach(ticker => {
+            twentyForty(ticker)
+            setInterval(twentyForty, 60 * 1000, ticker);
         })
     }
     else console.log('Market is closed.')
